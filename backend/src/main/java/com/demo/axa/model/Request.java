@@ -1,5 +1,7 @@
 package com.demo.axa.model;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Request {
+    @NotBlank(message = "Name is mandatory")
     private String name;
+
+    @NotBlank(message = "Email is mandatory")
+    @Email(message = "Email should be valid")
     private String email;
+
+    @NotBlank(message = "Message is mandatory")
     private String message;
 }
