@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SanitizedResponse {
-    private String rawInput;
-    private String sanitizedValue;
+public class Response {
+        private String name;
+        private String email;
+        private String message;
 }

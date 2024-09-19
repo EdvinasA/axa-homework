@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SanitizeRequest {
-    private String value;
+public class Request {
+    private String name;
+    private String email;
+    private String message;
 }
