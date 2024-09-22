@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController(value = "/api")
 @AllArgsConstructor
 public class BasicController {
 
     private BasicService basicService;
 
-    @PostMapping("/sanitize")
+    @PostMapping("/user")
     public ResponseEntity<User> sanitize(@Valid @RequestBody Request input) {
         return ResponseEntity.ok(this.basicService.sanitize(input));
     }
