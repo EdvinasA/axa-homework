@@ -1,6 +1,7 @@
 package com.demo.axa.repository;
 
 import com.demo.axa.converter.UserConverter;
+import com.demo.axa.exceptions.UserNotFoundException;
 import com.demo.axa.model.User;
 import com.demo.axa.model.UserEntity;
 import com.demo.axa.repository.jpa.UserJpaRepository;
@@ -18,11 +19,10 @@ public class UserRepository {
     public User findByUserId(Long userId) {
         return userJpaRepository.findById(userId)
                 .map(converter::toUser)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(UserNotFoundException::new);
     }
 
     public User save(User user) {
-
         UserEntity userEntity = userJpaRepository.save(converter.toUserEntity(user));
         return this.converter.toUser(userEntity);
     }
