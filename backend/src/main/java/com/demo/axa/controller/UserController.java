@@ -1,7 +1,7 @@
 package com.demo.axa.controller;
-import com.demo.axa.model.Request;
+import com.demo.axa.model.UserRequest;
 import com.demo.axa.model.User;
-import com.demo.axa.service.BasicService;
+import com.demo.axa.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api")
-public class BasicController {
+public class UserController {
 
-    private BasicService basicService;
+    private UserService userService;
 
     @PostMapping("/user")
-    public ResponseEntity<User> sanitize(@Valid @RequestBody Request input) {
-        return ResponseEntity.ok(this.basicService.sanitize(input));
+    public ResponseEntity<User> sanitize(@Valid @RequestBody UserRequest input) {
+        return ResponseEntity.ok(this.userService.createUser(input));
     }
 
 }

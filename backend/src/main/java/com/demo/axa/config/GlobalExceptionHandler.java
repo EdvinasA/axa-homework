@@ -1,5 +1,7 @@
 package com.demo.axa.config;
 
+import com.demo.axa.exceptions.EmailInUseException;
+import com.demo.axa.exceptions.UserNotFoundException;
 import com.demo.axa.model.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +34,18 @@ public class GlobalExceptionHandler {
         });
 
         ErrorResponse errorResponse = new ErrorResponse("Validation failed", errors.toString());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EmailInUseException.class)
+    public ResponseEntity<ErrorResponse> handleValidationExceptions(EmailInUseException ex) {
+        ErrorResponse errorResponse = new ErrorResponse("EmailInUseException", ex.toString());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleValidationExceptions(UserNotFoundException ex) {
+        ErrorResponse errorResponse = new ErrorResponse("UserNotFoundException", ex.toString());
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 }

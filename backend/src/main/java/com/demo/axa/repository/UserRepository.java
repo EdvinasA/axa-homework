@@ -22,8 +22,15 @@ public class UserRepository {
                 .orElseThrow(UserNotFoundException::new);
     }
 
+    public boolean doesEmailExist(String email) {
+        return userJpaRepository.findByEmail(email)
+                .map(converter::toUser)
+                .isEmpty();
+    }
+
     public User save(User user) {
         UserEntity userEntity = userJpaRepository.save(converter.toUserEntity(user));
+
         return this.converter.toUser(userEntity);
     }
 }
