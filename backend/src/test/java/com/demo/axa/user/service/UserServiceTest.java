@@ -1,4 +1,4 @@
-package com.demo.axa.user;
+package com.demo.axa.user.service;
 
 import com.demo.axa.exceptions.EmailInUseException;
 import com.demo.axa.model.UserRequest;
