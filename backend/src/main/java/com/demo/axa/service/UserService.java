@@ -23,8 +23,8 @@ public class UserService {
 
     public User createUser(UserRequest input) {
         if (this.userRepository.doesEmailExist(input.getEmail())) {
-            return userRepository.save(new User(this.sanitize(input.getName()), this.sanitize(input.getEmail()), this.sanitize(input.getMessage())));
+            throw new EmailInUseException();
         }
-        throw new EmailInUseException();
+        return userRepository.save(new User(this.sanitize(input.getName()), this.sanitize(input.getEmail()), this.sanitize(input.getMessage())));
     }
 }
