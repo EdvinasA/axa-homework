@@ -2,7 +2,8 @@ import { ChangeEvent, useState } from 'react';
 import { Box, Button } from '@mui/material';
 import FormComponent from "./FormComponent";
 import { fetchRequest } from "../api/api";
-import { CustomError, UserCreationResponse, UserForm } from "../models/userModels";
+import { UserCreationResponse, UserForm } from "../models/userModels";
+import DisplayDataComponent from "./DisplayDataComponent";
 
 function UserFormComponent() {
     const [formValues, setFormValues] = useState<UserForm>({
@@ -84,13 +85,14 @@ function UserFormComponent() {
 
             {error ? (
                 <Box sx={{ mt: 2, color: 'red' }}>
-                    <h2>Error:</h2>
-                    <pre>{error}</pre>
+                    <DisplayDataComponent title="Error" value={error} />
                 </Box>
             ) : response ? (
                 <Box sx={{ mt: 2 }}>
-                    <h2>Response from API:</h2>
-                    <pre>{JSON.stringify(response, null, 2)}</pre>
+                    <h2>New user created</h2>
+                    <DisplayDataComponent title="Name" value={response.name} />
+                    <DisplayDataComponent title="Email" value={response.email} />
+                    <DisplayDataComponent title="Message" value={response.message} />
                 </Box>
             ) : null}
         </Box>
