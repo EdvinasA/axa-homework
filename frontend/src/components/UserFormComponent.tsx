@@ -1,15 +1,18 @@
 import { ChangeEvent, useState } from 'react';
 import { Box, Button } from '@mui/material';
 import FormComponent from "./FormComponent";
+import { fetchRequest } from "../api/api";
+import { CustomError, UserCreationResponse, UserForm } from "../models/userModels";
 
 function UserFormComponent() {
-    const [formValues, setFormValues] = useState({
+    const [formValues, setFormValues] = useState<UserForm>({
         name: '',
         email: '',
         message: '',
     });
-    const [response, setResponse] = useState(null);
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [response, setResponse] = useState<UserCreationResponse | null>(null);
+    const [error, setError] = useState<string | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -20,21 +23,19 @@ function UserFormComponent() {
     };
 
     const handleSubmit = async (event: any) => {
+        setResponse(null)
+        setError(null)
         event.preventDefault();
         setIsSubmitting(true);
         try {
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/user`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formValues),
-            });
-
-            const result = await response.json();
+            const result = await fetchRequest<UserCreationResponse>(
+                `${process.env.REACT_APP_BASE_URL}/user`,
+                'POST',
+                formValues
+            );
             setResponse(result);
         } catch (error) {
-            setResponse(error as any)
+            setError((error as Error).message);
         } finally {
             setIsSubmitting(false);
         }
@@ -81,12 +82,17 @@ function UserFormComponent() {
                 </Button>
             </form>
 
-            {response && (
+            {error ? (
+                <Box sx={{ mt: 2, color: 'red' }}>
+                    <h2>Error:</h2>
+                    <pre>{error}</pre>
+                </Box>
+            ) : response ? (
                 <Box sx={{ mt: 2 }}>
                     <h2>Response from API:</h2>
                     <pre>{JSON.stringify(response, null, 2)}</pre>
                 </Box>
-            )}
+            ) : null}
         </Box>
     );
 }

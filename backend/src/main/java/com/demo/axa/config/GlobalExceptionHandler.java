@@ -39,13 +39,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(EmailInUseException.class)
     public ResponseEntity<ErrorResponse> handleValidationExceptions(EmailInUseException ex) {
-        ErrorResponse errorResponse = new ErrorResponse("EmailInUseException", ex.toString());
+        ErrorResponse errorResponse = new ErrorResponse("Email is already in use", ex.toString());
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleValidationExceptions(UserNotFoundException ex) {
-        ErrorResponse errorResponse = new ErrorResponse("UserNotFoundException", ex.toString());
+        ErrorResponse errorResponse = new ErrorResponse("User not found.", ex.toString());
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 }
