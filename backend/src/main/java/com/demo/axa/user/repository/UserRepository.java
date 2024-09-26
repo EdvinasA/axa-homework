@@ -16,12 +16,6 @@ public class UserRepository {
     private final UserJpaRepository userJpaRepository;
     private final UserConverter converter;
 
-    public User findByUserId(Long userId) {
-        return userJpaRepository.findById(userId)
-                .map(converter::toUser)
-                .orElseThrow(UserNotFoundException::new);
-    }
-
     public boolean doesEmailExist(String email) {
         return userJpaRepository.findByEmail(email)
                 .map(converter::toUser)
