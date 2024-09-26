@@ -1,4 +1,4 @@
-package com.demo.axa.model;
+package com.demo.axa.user.model;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

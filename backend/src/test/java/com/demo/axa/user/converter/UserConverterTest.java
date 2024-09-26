@@ -1,8 +1,7 @@
 package com.demo.axa.user.converter;
 
-import com.demo.axa.converter.UserConverter;
-import com.demo.axa.model.User;
-import com.demo.axa.model.UserEntity;
+import com.demo.axa.user.model.User;
+import com.demo.axa.user.model.UserEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

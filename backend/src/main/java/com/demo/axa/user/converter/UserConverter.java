@@ -1,7 +1,7 @@
-package com.demo.axa.converter;
+package com.demo.axa.user.converter;
 
-import com.demo.axa.model.User;
-import com.demo.axa.model.UserEntity;
+import com.demo.axa.user.model.User;
+import com.demo.axa.user.model.UserEntity;
 import org.springframework.stereotype.Service;
 
 @Service

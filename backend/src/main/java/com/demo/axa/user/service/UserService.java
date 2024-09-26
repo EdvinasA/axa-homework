@@ -1,9 +1,9 @@
-package com.demo.axa.service;
+package com.demo.axa.user.service;
 
 import com.demo.axa.exceptions.EmailInUseException;
-import com.demo.axa.model.UserRequest;
-import com.demo.axa.model.User;
-import com.demo.axa.repository.UserRepository;
+import com.demo.axa.user.model.UserRequest;
+import com.demo.axa.user.model.User;
+import com.demo.axa.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

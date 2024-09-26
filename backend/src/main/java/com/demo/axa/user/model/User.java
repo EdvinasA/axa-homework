@@ -1,4 +1,4 @@
-package com.demo.axa.model;
+package com.demo.axa.user.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

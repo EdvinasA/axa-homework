@@ -1,7 +1,7 @@
-package com.demo.axa.controller;
-import com.demo.axa.model.UserRequest;
-import com.demo.axa.model.User;
-import com.demo.axa.service.UserService;
+package com.demo.axa.user.controller;
+import com.demo.axa.user.model.UserRequest;
+import com.demo.axa.user.model.User;
+import com.demo.axa.user.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

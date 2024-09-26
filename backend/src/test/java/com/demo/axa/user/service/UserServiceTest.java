@@ -1,16 +1,14 @@
 package com.demo.axa.user.service;
 
 import com.demo.axa.exceptions.EmailInUseException;
-import com.demo.axa.model.UserRequest;
-import com.demo.axa.model.User;
-import com.demo.axa.repository.UserRepository;
-import com.demo.axa.service.UserService;
+import com.demo.axa.user.model.UserRequest;
+import com.demo.axa.user.model.User;
+import com.demo.axa.user.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;

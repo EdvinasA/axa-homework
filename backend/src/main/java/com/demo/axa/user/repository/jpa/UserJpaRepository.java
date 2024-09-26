@@ -1,6 +1,6 @@
-package com.demo.axa.repository.jpa;
+package com.demo.axa.user.repository.jpa;
 
-import com.demo.axa.model.UserEntity;
+import com.demo.axa.user.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
